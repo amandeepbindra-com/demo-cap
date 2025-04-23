@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <style>
         .lyContainer {
             max-width: 1200px;
@@ -19,7 +20,7 @@
 
         .ly-full-bg-section {
           height: 100vh;
-          background-image: url('https://picsum.photos/1920/1080'); /* Placeholder image */
+          background-image: url('https://placehold.co/1280x1080'); /* Placeholder image */
           background-size: cover;
           background-position: center;
           display: flex;
@@ -125,12 +126,20 @@
             margin-bottom: 15px;
         }
         
-        .lyTocList {
-            list-style-position: inside;
-        }
-        
         .lyTocList li {
             margin-bottom: 10px;
+        }
+
+        .lyTocList li a {
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lyTocList li a::after {
+            content: "→";
+            margin-left: 8px;
         }
         
         /* Content sections */
@@ -265,41 +274,154 @@
         
         /* Timeline in Section 4 */
         .lyTimeline {
-            position: relative;
-            margin: 40px 0;
-            padding-left: 50px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+          position: relative;
+          margin: 40px 0;
         }
-        
-        .lyTimelineVisible {
-            opacity: 1;
+
+        .lyTimelineDash {
+          text-align: center;
+          font-size: 18px;
+          color: #0066cc;
+          font-weight: bold;
+          margin-bottom: 10px;
         }
-        
-        .lyTimelineLine {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #0066cc;
+
+
+        .lyTimelineLineConnector {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 2px;
+          background-color: #0066cc;
+          transform: translateX(-50%);
+          z-index: 0;
         }
-        
+
         .lyTimelineItem {
-            position: relative;
-            margin-bottom: 30px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 50px;
+          position: relative;
         }
-        
-        .lyTimelineItem:before {
-            content: '';
-            position: absolute;
-            left: -50px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #0066cc;
+
+        .lyTimelineItem:nth-child(even) {
+          flex-direction: row-reverse;
         }
+
+        .lyTimelineItemContent {
+          width: 45%;
+          padding: 15px;
+          background-color: #f0f8ff;
+          border-radius: 8px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          z-index: 1;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+
+        .lyTimelineMarkermain {
+          width: 10%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .lyTimelineMarker {
+          width: 120px;
+          height: 120px;
+          border: 4px solid #0066cc;
+          border-radius: 50%;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: #0066cc;
+          font-size: 14px;
+          text-align: center;
+          z-index: 2;
+          padding: 10px;
+        }
+
+        .lyTimelineMarker span {
+          line-height: 1.2;
+          display: block;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+          .lyTimelineItem {
+            flex-direction: column-reverse !important;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+          }
+
+          .lyTimelineItemContent {
+            width: 90%;
+          }
+
+          .lyTimelineMarkermain {
+            width: 100%;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+            /* Section 3: Responsive Cards */
+            .lyCards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lyCard {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .lyCardNav {
+                display: none;
+            }
+
+            /* Section 5: Responsive Info Items */
+            .lyInfoItem {
+                flex-direction: column;
+            }
+
+            .lyInfoPoints {
+                width: 100% !important;
+                border-left: none;
+                border-top: 1px solid #ddd;
+                margin-top: 10px;
+            }
+
+            /* Section 6: Responsive Tabs */
+            .lyTabs {
+                flex-direction: column !important;
+            }
+
+            .lyTabList {
+                width: 100% !important;
+                float: none !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                display: flex !important;
+            }
+
+            .lyTabList .lyTab {
+                flex: 1 0 auto !important;
+                text-align: center !important;
+                margin-right: 5px !important;
+            }
+
+            .lyTabContent {
+                margin-left: 0 !important;
+                margin-top: 20px !important;
+            }
+        }
+
+
         
         /* Lists in Section 5 */
         .lyInfoList {
@@ -391,7 +513,26 @@
             height: auto;
             border-radius: 5px;
         }
-        
+
+        .lySection#section8 ul {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-left: 0;
+            list-style-type: none;
+        }
+
+        .lySection#section8 ul li {
+            align-content: center;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 40px 40px;
+            border-radius: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         /* Accordion in Section 9 & 10 */
         .lyAccordion {
             margin: 20px 0;
@@ -430,6 +571,13 @@
         
         .lyAccordionItem.lyActive .lyAccordionContent {
             display: block;
+        }
+
+        /* Section 11 */
+
+        .section11_main{
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
         
         /* Video in Section 13 */
@@ -513,6 +661,21 @@
         
         .lyExpandedItem.lyActive .lyExpandedContent {
             display: block;
+        }
+        .lyvideo{
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 15px;
+        }
+        .lyv{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -634,51 +797,97 @@
         
         <!-- Section 4 -->
         <section id="section4" class="lySection">
-            <h2 class="lySectionTitle">Evolution of Customer Loyalty Programs</h2>
-            <p>Origin of Loyalty Programs - Copper Loyalty Coins (1793)</p>
-            
-            <div class="lyTimeline">
-                <div class="lyTimelineLine"></div>
-                <div class="lyTimelineItem">
-                    <h3>1793 - Copper Tokens</h3>
-                    <p>The origin of Loyalty Programs can be traced to 1793 when supermarkets and gas stations started offering their customers 'copper tokens' which could be redeemed for in-store merchandise.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>1872 - Loyalty Tickets</h3>
-                    <p>In 1872, the Grand Union Tea Company started distributing tickets which could be exchanged for merchandise from the Grand Union store catalogs.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>1886 - Loyalty Certificates</h3>
-                    <p>The Larkin Company, a hybrid soap manufacturer and premium mail-order business started distributing certificates with its soap sets. The company encouraged its customers to redeem these certificates for items from the company's catalog.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>Late 19th to Early 20th Century - Stamps</h3>
-                    <p>A departmental store in Milwaukee was the first to use trading stamps for boosting customer loyalty. The premise was simple - customers were given trading stamps for every purchase which they pasted into booklets issued by the company. By collecting a certain number of filled booklets, customers could exchange it for toys, tools, jewelry and household items.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>1929 - Loyalty Box Tops</h3>
-                    <p>Betty Crocker started issuing coupons which could be redeemed for flatware. Soon after, they started printing the coupons on the outside of packages and the term 'Box Tops' was born.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>1980s - Frequent Flier & Cashback Loyalty Programs</h3>
-                    <p>In the early 1980s, American Airlines kick started the ‘Frequent Flier Program’ with its famed AA Advantage program. A few years later, Discover started the concept of offering cash backs to customers based on the number of purchases in a year.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>1995 - Card-based Loyalty Programs</h3>
-                    <p>Tesco was the first to use technology to track customer behavior when it implemented the world's first card-based loyalty program.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>2000s - Data-Driven Loyalty Programs</h3>
-                    <p>The early 2000s brought a wave of digital transformation. With the use of CRM systems and integration of POS customer data, data-driven loyalty programs started gaining prominence. Amazon launched the very first version on their brilliant Amazon Prime program.</p>
-                </div>
-                <div class="lyTimelineItem">
-                    <h3>2010 onwards - Mobile & multi-channel Loyalty</h3>
-                    <p>The advent of smartphones saw the rise of mobile apps and multichannel loyalty programs. Customers could now earn and redeem rewards across touchpoints, from in-store to online and via mobile apps. Social media also became a key component, with brands encouraging customers to engage with them on digital platforms for additional rewards.</p>
-                </div>
+          <h2 class="lySectionTitle">Evolution of Customer Loyalty Programs</h2>
+          <p>Origin of Loyalty Programs - Copper Loyalty Coins (1793)</p>
+
+          <div class="lyTimeline">
+            <div class="lyTimelineLineConnector"></div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>Supermarkets and gas stations offered ‘copper tokens’ redeemable for in-store merchandise, laying the foundation of loyalty programs.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1793<br>Copper Tokens</span></div>
+              </div>
             </div>
-            
-            <p>Over the years, loyalty programs have steadily evolved from being passive ‘reward & retain' instruments to becoming engagement powerhouses - enabling brands and customers to interact, share and build on positive experiences across the customer journey.</p>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>The Grand Union Tea Company offered tickets exchangeable for goods, boosting customer engagement through value.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1872<br>Loyalty Tickets</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>The Larkin Company added certificates to soap products, redeemable from catalogs — a hybrid loyalty and sales model.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1886<br>Certificates</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>Milwaukee stores introduced trading stamps that customers collected and redeemed for goods, increasing retention.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1900s<br>Stamps</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>Betty Crocker pioneered printed ‘Box Tops’ on packaging, establishing a loyalty mechanism rooted in everyday purchases.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1929<br>Box Tops</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>American Airlines launched frequent flyer programs; Discover introduced cashback — changing how loyalty was measured.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1980s<br>Frequent Flier</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>Tesco became the first to implement card-based tracking of customer behavior, enabling targeted rewards.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>1995<br>Card-Based</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>CRM and POS systems powered data-driven loyalty. Amazon Prime offered subscriptions for exclusive perks.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>2000s<br>Data-Driven</span></div>
+              </div>
+            </div>
+
+            <div class="lyTimelineItem">
+              <div class="lyTimelineItemContent">
+                <p>Mobile apps and omnichannel programs emerged. Customers earned rewards across in-store, web, and social platforms.</p>
+              </div>
+              <div class="lyTimelineMarkermain">
+                <div class="lyTimelineMarker"><span>2010+<br>Omnichannel</span></div>
+              </div>
+            </div>
+          </div>
+
+          <p>Loyalty programs have evolved into powerful tools to foster customer engagement, spanning decades of innovation and tech integration.</p>
         </section>
+
         
         <!-- Section 5 -->
         <section id="section5" class="lySection">
@@ -971,66 +1180,94 @@
                 <li>Seek regular feedback from members on how they find the existing program structure for earning and redeeming.</li>
             </ul>
             <h3>Some of the Most Celebrated Loyalty Programs</h3>
-            <h3>Sephora Beauty Insider</h3>
-            <p>Sephora offers a points-based loyalty program. Customers swipe their Beauty Insider cards at every purchase to track the amount of money they spend. Depending on a customer's average purchase threshold, they're grouped into one of three types of Beauty Insider — these tiers identify the top spenders among the already loyal group of customers.</p>
-            <div>
-                <div>
-                    <p>Every dollar spent earns the member one Beauty Insider point, which shoppers can redeem for beauty products at checkout.</p>
-                    <p>One of the best parts of a Beauty Insider at any tier is the free samples! Being able to try before you buy is very beneficial for skin care and beauty products.</p>
+            <div class="section11_main">
+                <h3>Sephora Beauty Insider</h3>
+                <p>Sephora offers a points-based loyalty program. Customers swipe their Beauty Insider cards at every purchase to track the amount of money they spend. Depending on a customer's average purchase threshold, they're grouped into one of three types of Beauty Insider — these tiers identify the top spenders among the already loyal group of customers.</p>
+                <div class="row g-4">
+                    <div class="col-md-8">
+                        <img src="https://placehold.co/800x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Every dollar spent earns the member one Beauty Insider point, which shoppers can redeem for beauty products at checkout.</p>
+                        <p>One of the best parts of a Beauty Insider at any tier is the free samples! Being able to try before you buy is very beneficial for skin care and beauty products.</p>
+                    </div>
                 </div>
             </div>
-            
-            <h3>Amazon Prime</h3>
-            <div>
-                <div>
-                    <p>A paid subscription model, Amazon Prime offers free, two-day shipping on millions of products with no minimum purchase. Plus access to Amazon services like Prime Video, Gaming, Reading, Photos and more.</p>
-                    <p>The program delivers such simple and straightforward value to frequent shoppers that the annual payment makes sense. Amazon Prime has been hugely successful, with Prime members spending twice as much as non-Prime members do.</p>
+            <div class="section11_main">
+                <h3>Amazon Prime</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <p>A paid subscription model, Amazon Prime offers free, two-day shipping on millions of products with no minimum purchase. Plus access to Amazon services like Prime Video, Gaming, Reading, Photos and more.</p>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="https://placehold.co/800x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                </div>
+                <p>The program delivers such simple and straightforward value to frequent shoppers that the annual payment makes sense. Amazon Prime has been hugely successful, with Prime members spending twice as much as non-Prime members do.</p>
+            </div>
+            <div class="section11_main">
+                <h3>PetSmart Treats Rewards</h3>
+                <p>What pet owner doesn't love treating their best friend to delicious food, new toys, a haircut, and more? The PetSmart Treats loyalty program makes this easy for pet owners to do while also saving them money. The beloved pet supplies brand introduced several changes to its program in April 2024 and made it better with -</p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <ul>
+                            <li>Simplified cashback</li>
+                            <li>New VIP tiers and exclusive perks</li>
+                            <li>A refreshed mobile app experience</li>
+                            <li>Connected omnichannel loyalty experience that works in-store and online</li>
+                            <li>New ways to earn and redeem rewards</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="https://placehold.co/800x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                </div>
+                <p>Pet care can be quite expensive. So being able to collect and use points for activities like grooming, puppy training, and pet hotels offers great value.</p>
+            </div>
+            <div class="section11_main">
+                <h3>Body Shop - Love Your BodyTM Club</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <p>The Body Shop believes that business can be a force for good. So their loyalty program makes it easy for customers to gain rewards while having the option to donate. As a member of the Love Your Body Club, customers earn a point for every dollar spent and receive exclusive members-only parties and sneak peeks of new collections.</p>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="https://placehold.co/800x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                </div>
+                <p>Points can be redeemed for discounts but also donations to a variety of charities. This solidifies the brand’s image and increases customer engagement and loyalty since customer values are reflected in the program.</p>
+            </div>
+            <div class="section11_main">
+                <h3>Chick-Fil-A-One</h3>
+                <p>If there’s one quick service restaurant that knows how to rack up the sales, it’s Chick-fil-A with $13.7 billion in system-wide sales in 2020. A big part of their success can be attributed to their loyalty program, Chick-fil-A One, which boasted millions of active users</p>
+                <img src="https://placehold.co/800x200" class="img-fluid rounded mb-2 w-100" alt="Amazon Prime">
+                <p>With its enticing benefits like free treats, convenient drive-thru experiences, and opportunities to gain exclusive rewards, customers keep coming back for more. Chick-fil-A also uses their app to gain insights on customer data and feedback so they can offer an experience that is worthwhile to their customers.</p>
+            </div>
+            <div class="section11_main">
+                <h3>Ben & Jerry’s Flavour Fanatic</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <img src="https://placehold.co/200x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                    <div class="col-md-8">
+                        <p>There’s nothing sweeter than an ice cream loyalty program. By signing up for Ben & Jerry’s Flavor Fanatic program, customers can get 10% off every purchase along with extra perks like free cones and insider scoop.</p>
+                        <p>Along with rewards like discounts and free birthday cones, Ben & Jerry’s also advocates for social justice with special flavors like Save Our Swirled! for the global climate movement and I Dough, I Dough for marriage equality.</p>
+                        <p>Not only do they have social justice-themed flavors, but they also donate sales to charities that support the environment, social programs, animal welfare, and other causes.</p>
+                    </div>
                 </div>
             </div>
-
-            <h3>PetSmart Treats Rewards</h3>
-            <div>
-                <div>
-                    <p>What pet owner doesn't love treating their best friend to delicious food, new toys, a haircut, and more? The PetSmart Treats loyalty program makes this easy for pet owners to do while also saving them money. The beloved pet supplies brand introduced several changes to its program in April 2024 and made it better with -</p>
-                    <ul>
-                        <li>Simplified cashback</li>
-                        <li>New VIP tiers and exclusive perks</li>
-                        <li>A refreshed mobile app experience</li>
-                        <li>Connected omnichannel loyalty experience that works in-store and online</li>
-                        <li>New ways to earn and redeem rewards</li>
-                    </ul>
-                    <p>Pet care can be quite expensive. So being able to collect and use points for activities like grooming, puppy training, and pet hotels offers great value.</p>
+            <div class="section11_main">
+                <h3>The North Face XPLR Pass</h3>
+                <div class="row g-4">
+                    <div class="col-md-8">
+                        <img src="https://placehold.co/800x200" class="img-fluid w-100 rounded mb-2" alt="Amazon Prime">
+                    </div>
+                    <div class="col-md-4">
+                        <p>In the outdoor apparel and gear industry, it’s fair to say that most customers value experiences over other forms of incentives</p>
+                    </div>
                 </div>
+                <p>With The North Face XPLR Pass, members can earn points by purchasing merchandise or attending special events - whichever works best for them. Customers can use their points towards unique travel experiences such as a mountain climbing trip in Nepal.</p>
+                <p>The XPLR Pass also extends an early access to limited-edition collections, exclusive access to products released for members-first, and member-only field testing to allow customers to test products to make sure it’s the right fit for their needs. Rather than offering basic discounts, The North Face curates experiences that speak directly to and build a stronger connection with their customers.</p>
             </div>
-
-            <h3>Body Shop - Love Your BodyTM Club</h3>
-            <div>
-                <div>
-                    <p>The Body Shop believes that business can be a force for good. So their loyalty program makes it easy for customers to gain rewards while having the option to donate.  As a member of the Love Your Body Club, customers earn a point for every dollar spent and receive exclusive members-only parties and sneak peeks of new collections. Points can be redeemed for discounts but also donations to a variety of charities. This solidifies the brand’s image and increases customer engagement and loyalty since customer values are reflected in the program.</p>
-                    <b>Chick-Fil-A-One</b>
-                    <p>If there’s one quick service restaurant that knows how to rack up the sales, it’s Chick-fil-A with $13.7 billion in system-wide sales in 2020. A big part of their success can be attributed to their loyalty program, Chick-fil-A One, which boasted millions of active users.</p>
-                    <p>With its enticing benefits like free treats, convenient drive-thru experiences, and opportunities to gain exclusive rewards, customers keep coming back for more. Chick-fil-A also uses their app to gain insights on customer data and feedback so they can offer an experience that is worthwhile to their customers.</p>
-                </div>
-            </div>
-
-            <h3>Ben & Jerry’s Flavour Fanatic</h3>
-            <div>
-                <div>
-                    <p>There’s nothing sweeter than an ice cream loyalty program. By signing up for Ben & Jerry’s Flavor Fanatic program, customers can get 10% off every purchase along with extra perks like free cones and insider scoop. </p>
-                    <p>Along with rewards like discounts and free birthday cones, Ben & Jerry’s also advocates for social justice with special flavors like Save Our Swirled! for the global climate movement and I Dough, I Dough for marriage equality.</p>
-                    <p>Not only do they have social justice-themed flavors, but they also donate sales to charities that support the environment, social programs, animal welfare, and other causes.</p>
-                </div>
-            </div>
-
-            <h3>The North Face XPLR Pass</h3>
-            <div>
-                <div>
-                    <p>In the outdoor apparel and gear industry, it’s fair to say that most  customers value experiences over other forms of incentives.</p>
-                    <p>With The North Face XPLR Pass, members can earn points by purchasing merchandise or attending special events - whichever works best for them. Customers can use their points towards unique travel experiences such as a mountain climbing trip in Nepal.</p>
-                    <p>The XPLR Pass also extends an early access to limited-edition collections, exclusive access to products released for members-first, and member-only field testing to allow customers to test products to make sure it’s the right fit for their needs. Rather than offering basic discounts, The North Face curates experiences that speak directly to and build a stronger connection with their customers.</p>
-                </div>
-            </div>
-
         </section>
 
         <!-- Section 12 -->
@@ -1063,8 +1300,13 @@
             <p>Define and implement a clear data privacy policy and communicate it to all stakeholders. The policy should specify who is allowed to access the data and how. It should also clearly state how the data should and shouldn’t be used.</p>
             <p>Publish a privacy policy using clear and simple language for customers to read through. The policy should specify how your company collects, stores, uses, and protects customer data. Keep customers informed on any changes that are made to the policy.</p>
             <div class="lyVideoContainer">
-                <div class="lyVideoPlaceholder">
-                    <div class="lyVideoPlay"></div>
+                <div class="lyvideo">
+                    <iframe src="https://www.youtube.com/embed/6yA5x8hr4XQ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            class="lyv">
+                    </iframe>
                 </div>
             </div>
             <p>Privacy-conscious companies enjoy deeper consumer loyalty, improved ROI and are less reliant on third-party data to make crucial business decisions. Businesses that can factor privacy into their loyalty initiatives will definitely ‘hear back from their customers’ and build long-term trust.</p>
@@ -1114,12 +1356,17 @@
             <h2 class="lySectionTitle">Not a Provider. Choose a Loyalty Partner. </h2>
             <p>In the world of customer retention, building a loyalty program stands out as a major endeavor for any company. Loyalty programs can be a game-changer if created with care and deployed with precision. And taking the first step is often the most daunting, with the many decisions to be made around your program.</p>
             <p>This is why brands must choose a loyalty service provider based on three things - they should understand emotional connections, gather and decode customer insights, and have strong project orchestration capabilities.</p>
+
+            <div class="text-center my-4">
+              <img src="https://placehold.co/500x300" class="img-fluid rounded" alt="Loyalty Partner">
+            </div>
             
             <p>At Capillary, we partner with 400+ global brands to create and deliver comprehensive enterprise loyalty programs for 1 Billion + customers.</p>
             <p>With an industry-leading loyalty cloud, Capillary delivers an API-centric, no-code loyalty platform for omnichannel businesses, combined with unique in-store functionalities. Our best-in-class capabilities engage your program members wherever they are - online, in-store, or on the go.</p>
             
             <p><b>Begin, Build, and Broaden</b> <a href="#">your Loyalty Journey today with Capillary</a></p>
             <p><b>Know about our pioneering Loyalty Technologies that create memories and moments of delight!</b><a href="#"> Loyalty +  |  Insights +  |  Engage +  |  Rewards + |  Capillary CDP +</a></p>
+            <a href="#" class="lyContactBtn">Contact Us</a>
         </section>
 
         <!-- JavaScript for interactive elements -->
@@ -1233,4 +1480,3 @@
 
 </body>
 </html>
-                
