@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We're Taking a Loyal-Tea Break | Capillary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tea-steam {
+            position: absolute;
+            top: -50px;
+            right: 30px;
+            width: 80px;
+            height: 100px;
+            opacity: 0.1;
+            animation: steam 3s ease-in-out infinite;
+        }
+
+        .tea-steam::before,
+        .tea-steam::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: #6b46c1;
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .tea-steam::before {
+            left: 0;
+            animation: steam-left 3s ease-in-out infinite;
+        }
+
+        .tea-steam::after {
+            right: 0;
+            animation: steam-right 3s ease-in-out infinite;
+        }
+
+        @keyframes steam {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes steam-left {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(-5px) scale(1.2); }
+        }
+
+        @keyframes steam-right {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(5px) scale(1.2); }
+        }
+
+        h1 {
+            color: #6b46c1;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            color: #8b5cf6;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .about-section {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f9fafb;
+            border-radius: 12px;
+            border-left: 4px solid #6b46c1;
+        }
+
+        .about-section h2 {
+            color: #6b46c1;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .about-section p {
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .form-section {
+            text-align: left;
+        }
+
+        .form-title {
+            color: #374151;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #374151;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6b46c1;
+            box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #6b46c1;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #553c9a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .closing-text {
+            color: #6b46c1;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .about-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tea-steam"></div>
+        
+        <h1>We're Taking a Loyal-Tea Break</h1>
+        <p class="tagline">(But We'll Be Right Back!)</p>
+        
+        <p style="color: #6b7280; margin-bottom: 30px; font-size: 17px;">
+            Even the most loyal systems need a moment to recharge.
+        </p>
+        
+        <div class="about-section">
+            <h2>About Capillary</h2>
+            <p>
+                Capillary is a leading loyalty management solutions provider, combining expert consultancy with an AI-powered technology platform. We help businesses build meaningful customer relationships, design effective loyalty programs, and turn data into actionable insights that drive growth and retention.
+            </p>
+        </div>
+        
+        <div class="form-section">
+            <h3 class="form-title">Let's Stay Connected</h3>
+            <p class="form-subtitle">
+                While our site is undergoing maintenance, we'd still love to hear from you. Please fill out the form below, and we'll get back to you as soon as possible.
+            </p>
+            
+            <h4 style="color: #374151; font-size: 18px; margin-bottom: 20px; text-align: center;">Contact Form</h4>
+            
+            <form>
+                <div class="form-group">
+                    <label for="name">Name: *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address: *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="requirements">Tell Us About Your Requirements: *</label>
+                    <textarea id="requirements" name="requirements" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        
+        <p class="closing-text">Talk soon!</p>
+    </div>
+</body>
+</html>
