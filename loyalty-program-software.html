@@ -248,83 +248,35 @@
         }
 
         /* Testimonials Section */
-        .testimonials {
-            padding: 6rem 2rem;
-            background: white;
-        }
+        .testimonials { padding: 4rem 2rem; background: #fff; }
+        .testimonials-content { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .testimonials h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #1e293b; }
 
-        .testimonials-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
+        .testimonial-slider { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+        .testimonial-arrow {
+          width: 40px; height: 40px; border-radius: 50%; background: #6366f1; color: white;
+          border: none; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center;
+          justify-content: center; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(99,102,241,0.3);
         }
+        .testimonial-arrow:hover { background: #4f46e5; transform: scale(1.1); }
 
-        .testimonials h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e293b;
-        }
-
-        .testimonial-slider {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
+        .testimonial-container { overflow: hidden; flex: 1; border-radius: 15px; }
+        .testimonial-track { display: flex; transition: transform 0.5s ease; }
 
         .testimonial-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 15px;
-            text-align: center;
-            min-width: 100%;
-            box-sizing: border-box;
+          min-width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white; padding: 2rem; text-align: center; box-sizing: border-box;
         }
+        .testimonial-text { font-size: 1.2rem; margin-bottom: 1.5rem; font-style: italic; }
+        .testimonial-author { font-weight: bold; font-size: 1.1rem; }
+        .testimonial-company { font-size: 0.95rem; opacity: 0.8; margin-top: 0.25rem; }
 
-        .testimonial-text {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-company {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
+        .testimonial-dots { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.5rem; }
         .testimonial-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            transition: background 0.3s ease;
+          width: 12px; height: 12px; background: #cbd5e1; border-radius: 50%; cursor: pointer;
+          transition: background 0.3s ease;
         }
-
-        .testimonial-dot.active {
-            background: #6366f1;
-        }
+        .testimonial-dot.active { background: #6366f1; }
 
         /* FAQs Section */
         .faqs {
@@ -457,7 +409,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">LoyaltyPro</div>
+            <div class="logo">Loyalty Program Software</div>
             <ul class="nav-links">
                 <li><a href="#products">Products</a></li>
                 <li><a href="#industries">Industries</a></li>
@@ -595,33 +547,40 @@
 
     <!-- Testimonials -->
     <section class="testimonials">
-        <div class="testimonials-content">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-container" id="testimonialContainer">
-                    <div class="testimonial-item">
-                        <div class="testimonial-text">"The loyalty program software has transformed our customer retention strategy. We've seen a 40% increase in repeat purchases since implementation."</div>
-                        <div class="testimonial-author">Sarah Johnson</div>
-                        <div class="testimonial-company">CMO at RetailPlus</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-text">"Implementation was seamless and the results speak for themselves. Our customer lifetime value has increased by 35% in just 6 months."</div>
-                        <div class="testimonial-author">Michael Chen</div>
-                        <div class="testimonial-company">VP Marketing at FashionForward</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-text">"The insights we get from the platform are incredible. We now understand our customers better than ever before and can create truly personalized experiences."</div>
-                        <div class="testimonial-author">Emma Rodriguez</div>
-                        <div class="testimonial-company">Director of Customer Experience at TechRetail</div>
-                    </div>
-                </div>
-                <div class="testimonial-nav">
-                    <div class="testimonial-dot active" onclick="showTestimonial(0)"></div>
-                    <div class="testimonial-dot" onclick="showTestimonial(1)"></div>
-                    <div class="testimonial-dot" onclick="showTestimonial(2)"></div>
-                </div>
+      <div class="testimonials-content">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-slider">
+          <button class="testimonial-arrow" onclick="previousTestimonial()">&#8249;</button>
+
+          <div class="testimonial-container">
+            <div class="testimonial-track" id="testimonialTrack">
+              <div class="testimonial-item">
+                <div class="testimonial-text">"This software helped boost our customer retention by 40%!"</div>
+                <div class="testimonial-author">Sarah Johnson</div>
+                <div class="testimonial-company">CMO at RetailPlus</div>
+              </div>
+              <div class="testimonial-item">
+                <div class="testimonial-text">"Seamless implementation and measurable growth in LTV."</div>
+                <div class="testimonial-author">Michael Chen</div>
+                <div class="testimonial-company">VP Marketing at FashionForward</div>
+              </div>
+              <div class="testimonial-item">
+                <div class="testimonial-text">"Brilliant insights and easy-to-use dashboard!"</div>
+                <div class="testimonial-author">Emma Rodriguez</div>
+                <div class="testimonial-company">Director of CX at TechRetail</div>
+              </div>
             </div>
+          </div>
+
+          <button class="testimonial-arrow" onclick="nextTestimonial()">&#8250;</button>
         </div>
+
+        <div class="testimonial-dots">
+          <div class="testimonial-dot active" onclick="showTestimonial(0)"></div>
+          <div class="testimonial-dot" onclick="showTestimonial(1)"></div>
+          <div class="testimonial-dot" onclick="showTestimonial(2)"></div>
+        </div>
+      </div>
     </section>
 
     <!-- FAQs -->
@@ -721,33 +680,41 @@
     </footer>
 
     <script>
-        // Testimonial slider functionality
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll('.testimonial-item');
-        const totalTestimonials = testimonials.length;
+        let currentIndex = 0;
+        const track = document.getElementById('testimonialTrack');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        const totalItems = dots.length;
+
+        function updateSlider() {
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+          });
+        }
 
         function showTestimonial(index) {
-            const container = document.getElementById('testimonialContainer');
-            const dots = document.querySelectorAll('.testimonial-dot');
-            
-            // Update active dot
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            
-            // Move container
-            container.style.transform = `translateX(-${index * 100}%)`;
-            currentTestimonial = index;
+          currentIndex = index;
+          updateSlider();
         }
+
+        function nextTestimonial() {
+          currentIndex = (currentIndex + 1) % totalItems;
+          updateSlider();
+        }
+
+        function previousTestimonial() {
+          currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+          updateSlider();
+        }
+
+        setInterval(nextTestimonial, 5000);
+
 
         // Auto-slide testimonials
         function autoSlideTestimonials() {
             currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
             showTestimonial(currentTestimonial);
         }
-
-        // Start auto-slide
-        setInterval(autoSlideTestimonials, 5000);
 
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
